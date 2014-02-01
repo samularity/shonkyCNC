@@ -10,7 +10,6 @@ PinOut TinyMega (aka JockiBoard)  :	http://shackspace.de/wiki/doku.php?id=projec
 
 USB-Serial Device with command line
 
-
 B0,1,2,3 Driver X Axis
 B4,5,6,7 Driver Y Axis
 C6:		Enable/Disable Drivers
@@ -20,9 +19,6 @@ D4,5,6,7 Driver Z Axis
 D2:		Seriall_RX
 F0:		General Analog Input for Toolspeed etc.
 F1:		Switch Matrix Analog input
-
-
-
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +56,7 @@ int main(void)
 	usb_init(); 
 	timer_init();
 	sleep_ms(250);
-	readADC(0);//muss sein um einma ch0 auszuwählen		
+	
 	enable_stepper;
 	//interupt0 test
 	DDRD &= ~(1 << DDD0); // pin d0 als eingang (interrupt notaus)

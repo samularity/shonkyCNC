@@ -33,6 +33,8 @@
 #define enable_stepper PORTC |= (1<<PINC6); //portpin hign
 
 
+extern bool sys_error;
+
 //funktions prototypen
 void sleep_us(uint16_t us);
 void sleep_ms(uint16_t ms);

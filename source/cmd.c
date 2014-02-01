@@ -6,6 +6,7 @@
  */ 
 #include "cmd.h"
 
+
 bool cmd_mode = false;
 bool gcode_mode = false;
 
@@ -103,7 +104,16 @@ else	//kein g code mode prüfe das command
 			usb_send_str(" \r\n$");
 		}					
 			
-		  
+		else if (strncmp(command,"temp",4)==0)
+		{	
+			int16_t temperatur = readADC(20); //20 = adc channel intern temperatur measurment
+			temperatur = temperatur << 8;  //Result is in kelvin
+			temperatur -= 273 ; //+offset  celsius
+			usb_send_str("AVR Core Temp:  ");
+			usb_send_int( temperatur);
+			usb_send_str(" °C \r\n$");
+		}	  
+		
 		
 		  else if (strncmp(command,"gcode",5)==0)
 			{
