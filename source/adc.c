@@ -23,7 +23,7 @@ uint16_t readADC( uint8_t adc_channel)
 		case 11:  adc_ch11; break;
 		case 12:  adc_ch12; break;
 		case 13:  adc_ch13; break;
-		case 20: adc_temp; break;
+		case 20: adc_temp;  break;
 		default:  {return (0);}	//error
 	}
 
@@ -39,9 +39,9 @@ uint16_t readADC( uint8_t adc_channel)
 	for (uint8_t g = 0; g < 4; g++) {
 		ADCSRA |= (1<<ADSC); //start measurment
 		while(ADCSRA & (1 << ADSC)); // wait for finish
-		adc_Value = adc_Value + ( ADC ); // save
+		adc_Value +=  ADC ; // save
 	}
-	adc_Value = adc_Value /4 ; //divide by 4
+	adc_Value /= 4 ; //divide by 4
 
 	return adc_Value;
 }
@@ -49,8 +49,8 @@ uint16_t readADC( uint8_t adc_channel)
 void adc_init () // adc init
 {
 	//choose internal_vref or external_vref here (definded im macros adc.h)
-	//internal_vref   
-	external_vref //use external Vref
+	internal_vref; //für temperatur   
+	//external_vref //use external Vref
 	
 	DDRF &= ~(( 1 << PF0 )|( 1 << PF1 ))   ;  // PIN F0 and F1 as input 
 	ADMUX &= ~(1<<ADLAR); //auf oder abrunden

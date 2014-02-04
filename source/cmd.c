@@ -106,12 +106,20 @@ else	//kein g code mode prüfe das command
 			
 		else if (strncmp(command,"temp",4)==0)
 		{	
-			int16_t temperatur = readADC(20); //20 = adc channel intern temperatur measurment
-			temperatur = temperatur << 8;  //Result is in kelvin
-			temperatur -= 273 ; //+offset  celsius
-			usb_send_str("AVR Core Temp:  ");
-			usb_send_int( temperatur);
+			int32_t temperatur = 20;//annahme für raumtemperatur erste messung
+			for(;;){
+			sleep_ms(250);
+			
+			temperatur = ((temperatur*3)+ readADC(20))/4;
+			
+			usb_send_int(temperatur);
+			//temperatur = temperatur << 7;  //Result is in kelvin
+			//temperatur -= 273 ; //+offset  celsius
+			usb_send_str(" AVR Core Temp:  ");
+			usb_send_int( temperatur-230);
 			usb_send_str(" °C \r\n$");
+			}
+	
 		}	  
 		
 		

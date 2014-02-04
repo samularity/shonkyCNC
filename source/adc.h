@@ -26,7 +26,7 @@ void adc_init ();
 #define adc_ch11 ADMUX &= ~((1<<MUX2) | (1<<MUX3) | (1<<MUX4)); ADMUX |= ((1<<MUX1)|(1<<MUX0));	ADCSRB |=(1<<MUX5);		    // 100011
 #define adc_ch12 ADMUX &= ~((1<<MUX0) | (1<<MUX1) | (1<<MUX3)| (1<<MUX4)); ADMUX |= (1<<MUX2);	ADCSRB |=(1<<MUX5);		    // 100100
 #define adc_ch13 ADMUX &= ~((1<<MUX1) | (1<<MUX3) | (1<<MUX4)); ADMUX |= ((1<<MUX2)|(1<<MUX0));	ADCSRB |=(1<<MUX5);		    // 100100
-#define adc_temp ADMUX &=~((1<<MUX3)  | (1<<MUX4)); ADMUX|=((1<<MUX0)|(1<<MUX1)|(1<<MUX2));		ADCSRB |= (1<<MUX5);		//adc temp = 20
+#define adc_temp ADMUX &=~((1<<MUX3)  | (1<<MUX4)); ADMUX|=((1<<MUX0)|(1<<MUX1)|(1<<MUX2));		ADCSRB |= (1<<MUX5);		// 100111   adc temp = 20
 
 
 
