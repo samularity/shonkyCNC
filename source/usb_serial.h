@@ -20,8 +20,8 @@ void usb_serial_flush_output(void);	// immediately transmit any buffered output
 
 void usb_send_str( char *str);
 void uart_get_str(unsigned char *Buffer, uint8_t MaxLen );
-void usb_send_int (const uint32_t c);
-void usb_send_hex (const uint8_t c);
+void usb_send_int (int32_t c);
+void usb_send_hex ( uint8_t c);
 // serial parameters
 uint32_t usb_serial_get_baud(void);	// get the baud rate
 uint8_t usb_serial_get_stopbits(void);	// get the number of stop bits

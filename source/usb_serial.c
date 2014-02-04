@@ -952,7 +952,7 @@ void usb_send_str( char *str)
 	}
 }
 // Send a int to the USB serial port. -works 
-void usb_send_int(const uint32_t c){
+void usb_send_int(int32_t c){
 	 char buffer[20];
 	ltoa(c,buffer,10);
 	//utoa(c,buffer,10);
@@ -960,7 +960,7 @@ void usb_send_int(const uint32_t c){
 }
 
 // Send a int to the USB serial port. -works 
-void usb_send_hex( const uint8_t c){
+void usb_send_hex(  uint8_t c){
 	//in hex ausgebn
 	signed int i;
 	char digit;
