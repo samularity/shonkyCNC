@@ -12,10 +12,10 @@
 
 unsigned long pwmPeriod = 0;
 
+/*
+ //Timer init is done in usbserial.c already
 //ISR( TIMER4_OVF_vect ) {} //overflow
 
-
-/*
 void enable_intr(){
 	TIMSK4 = _BV(TOIE4);
 }
@@ -28,10 +28,8 @@ void initialize(unsigned long freq) {
 	
 	/* Init the internal PLL */
 //	PLLFRQ = _BV(PDIV1) |_BV(PDIV3) ; //set prescaler ist schon in usb.c gemacht
-	
 //	PLLCSR = _BV(PLLE); //enable prescaler ist in usb.c schon gemacht
 //	while(!(PLLCSR & _BV(PLOCK))); //warten bis pll gestartet
-	
 //	PLLFRQ |= _BV(PLLTM1); /* PCK 96MHz */
 	
 	
@@ -125,8 +123,6 @@ void setPeriod(unsigned long freq)  {
 	OCR4C = pwmPeriod;
 	
 }
-
-
 
 void tool_init (void)
 {
