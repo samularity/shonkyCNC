@@ -69,7 +69,7 @@ int main(void)
 	char inputbuffer[250]={0};
 	uint16_t counter = 0;
 	
-while(1)   
+ while(1)   
  {
 	if (usb_serial_available())
 	 {
@@ -77,12 +77,23 @@ while(1)
 	  usb_serial_putchar(inputbuffer[counter]);
 	  usb_serial_flush_input();
 	  counter++;
+	  if (inputbuffer[counter-1]==127)// 127 = del-?  console sagt 127=backspace  auf jeden fall löschen...
+	  {
+			if (counter>1)//counter is mind 2 D delete 2 chars from string
+			{
+				counter-=2; //set couter postion -2  (1 for char to delet an one for delet char)
+			}
+			else
+			{
+				counter=0;
+			}
+	  }
+	  
 	  if ( (counter>= 20) || (inputbuffer[counter-1]==13) ) //sind 20 zeichern erreicht oder enter ger�ckt
 	   {
-		inputbuffer[counter-1]='\0'; //enter entfernen und string terminnieren
-		
+		 inputbuffer[counter-1]='\0'; //enter entfernen und string terminieren
 		 cmd_handler(inputbuffer);
-		 memset	(&inputbuffer,0,250);//string leeren
+		 memset	(&inputbuffer,0,250);//memset fills array &inputbuffer with 0's
 		counter =0; //z�hler zur�cksetzten string soll wieder ab 0 gef�llt werden
 		}//if stringende 
 	  }//if usbserial availab�le						
