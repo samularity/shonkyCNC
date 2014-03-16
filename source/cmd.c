@@ -32,7 +32,20 @@ else	//kein g code mode prüfe das command
 	
 		if (command[0]=='?' || (strncmp(command,"help",4)==0)  )
 			{
-			usb_send_str("\r\n A wild help meue apperars -  not\r\n$");		
+			usb_send_str(
+			"\r\n A wild help meue apperars -  after i write this thing ...\r\n"
+			"uptime \t- zeige uptime\r\n"
+			"led on \t- led an\r\n"
+			"led off \t- led aus\r\n"
+			"movex # \t-  bewegt in x richtung mir (-)# umdrehungen \r\n"
+			"movey # \t-  bewegt in y richtung mir (-)# umdrehungen \r\n"
+			"movez # \t-  bewegt in z richtung mir (-)# umdrehungen \r\n"
+			"temp \t- get temperature (does not work good)\r\n"
+			"gcode \t- enter special g code menu\r\n"
+			"exit \t- exit comand line mode\r\n"
+			"help \t- show help menu\r\n$"
+			);	
+				
 			}
 		 else if (strncmp(command,"uptime",6)==0)
 			{
